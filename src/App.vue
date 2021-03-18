@@ -1,19 +1,17 @@
 <template>
   <div id="app">
-dsffdsfdf
-  <component v-bind:is="layout"></component>
+    <component :is="layout">
+      <router-view/>
+    </component>
   </div>
 </template>
 
 <script>
-// import "@/scss/main.scss";
-import SimpleLayout from "./layouts/Simple.vue";
-
 export default {
-  components: {
-    SimpleLayout,
-  },
-};
+  computed: {
+    layout() {
+      return this.$route.meta.layout || 'default-layout'
+    }
+  }
+}
 </script>
-
-<style lang="scss"></style>
